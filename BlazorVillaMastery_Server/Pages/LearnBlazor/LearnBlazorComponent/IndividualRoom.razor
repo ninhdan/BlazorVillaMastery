@@ -1,0 +1,34 @@
+﻿@using BlazorVillaMastery_Server.Models
+
+<div class="bg-light border p-2 col-5 offset-1">
+    <h4 class="text-secondary">Room - @room.Id</h4>
+
+    <input type="checkbox" @onchange="RoomCheckBoxSelectionChanged" />
+    @room.RoomName<br />
+    @room.Price.ToString("C")<br />
+    <input type="checkbox" @bind-value="room.IsActive" /> &nbsp; Is Active<br />
+    <span>This room is @(room.IsActive ? "Active" : "InActive")</span>
+
+    @if (room.IsActive)
+    {
+        @foreach (var roomProp in room.RoomProps)
+        {
+            <div class="text-info">
+                @roomProp.Name - @roomProp.Value
+            </div>
+        }
+    }
+    <EditDeleteButton IsAdmin="false" />
+</div>
+
+@code {
+    [Parameter]
+    public BlazorRoom room { get; set; }
+    [Parameter]
+    public EventCallback<bool> OnRoomCheckBoxSelectionChanged { get; set; }
+
+    protected async Task RoomCheckBoxSelectionChanged(ChangeEventArgs e)
+    {
+       await OnRoomCheckBoxSelectionChanged.InvokeAsync((bool)e.Value);
+    }
+}
