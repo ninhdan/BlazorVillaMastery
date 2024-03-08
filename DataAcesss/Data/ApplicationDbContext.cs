@@ -14,5 +14,6 @@ namespace DataAcesss.Data
         
             
         }
+        public DbSet<HotelRoom> HotelRooms { get; set; }
     }
 }
