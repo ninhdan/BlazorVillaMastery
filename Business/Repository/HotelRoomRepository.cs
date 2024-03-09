@@ -46,7 +46,7 @@ namespace Business.Repository
 
         }
 
-        public async Task<IEnumerable<HotelRoomDTO>> GetAllHotelRooms(int roomId)
+        public async Task<IEnumerable<HotelRoomDTO>> GetAllHotelRooms()
         {
             try
             {

@@ -1,4 +1,6 @@
 ﻿@page "/hotel-room"
+@using global::Models
+@inject IHotelRoomRepository HotelRoomRepository
 
 <div class="row mt-4">
     <div class="col-8">
@@ -10,8 +12,46 @@
 </div>
 
 
-<h3>HotelRoomList</h3>
+<div class="row mt-4">
+    <div class="col-12">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Occupancy</th>
+                    <th>Rate</th>
+                    <th>Sqft</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (HotelRooms.Any())
+                {
+                    @foreach (var item in HotelRooms)
+                    {
+                        <td>@item.Name</td>
+                        <td>@item.Occupancy</td>
+                        <td>@item.RegularRate.ToString("C")</td>
+                        <td>@item.SqFt</td>
+                        <td></td>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5">No records found</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
 
 @code {
-
+    private IEnumerable<HotelRoomDTO> HotelRooms { get; set; } = new List<HotelRoomDTO>();
+    protected override async Task OnInitializedAsync()
+    {
+        HotelRooms = await HotelRoomRepository.GetAllHotelRooms();
+    }
 }
