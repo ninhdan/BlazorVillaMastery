@@ -4,7 +4,8 @@
 <h3 class="text-danger">Parent Child Component</h3>
 <CascadingValue Value="@MessageForGrandChild" Name="MessageForGrandParent">
     <CascadingValue Value="@LuckyNumber" Name="GrandParentsLuckyNumber">
-        <ChildComponent OnClickBtnMethod="ShowMessage" Title="@Title" >
+        <ChildComponent @ref="childComp"
+            OnClickBtnMethod="ShowMessage" Title="@Title" >
             <ChildContent>Render Fragement From Parent ! WHOO!!</ChildContent>
             <DangerChildContent>Danger Content from Render Fragement! WooHOO!</DangerChildContent>
         </ChildComponent>
@@ -17,9 +18,12 @@
 <AnotherChildComponent placeholder="Placeholder default"></AnotherChildComponent>
 <p><b>@messageText</b></p>
 
+<div class="row">
+    <button class="btn btn-success" @onclick="() => childComp.ShowToastrSuccess()">Show Alert</button>
+</div>
+
 
 @code {
-
     // public Dictionary<string, object> InputAttributesFromParent { get; set; } = new Dictionary<string, object>()
     // {
     //     {"placeholder", "Initial Text" },
@@ -28,7 +32,7 @@
 
 
     // };
-
+    private ChildComponent childComp;
 
     private string MessageForGrandChild = "This is a message from Grand Parent";
     private string LuckyNumber = "7";
