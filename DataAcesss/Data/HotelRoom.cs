@@ -24,5 +24,7 @@ namespace DataAcesss.Data
         public string UpdateBy { get; set; } 
         public DateTime UpdateDate { get; set; }
 
+        public virtual ICollection<HotelRoomImage> HotelRoomImages { get; set; }
+
     }
 }
