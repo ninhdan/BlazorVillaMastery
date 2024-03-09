@@ -5,13 +5,13 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorVillaMastery_Server", "BlazorVillaMastery_Server\BlazorVillaMastery_Server.csproj", "{CB2756AD-5F91-4F2B-9348-5AFC52FB4FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAcesss", "DataAcesss\DataAcesss.csproj", "{AE9EF0A3-FCFE-431B-9D9B-DBD5A709D321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAcesss", "DataAcesss\DataAcesss.csproj", "{AE9EF0A3-FCFE-431B-9D9B-DBD5A709D321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{03B7E060-514B-4510-B5C4-AB882B11863B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{03B7E060-514B-4510-B5C4-AB882B11863B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{502CF811-C616-4495-BE69-FB5672D8AB84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{502CF811-C616-4495-BE69-FB5672D8AB84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{896FD34F-C291-4BDF-A1FA-756BB699FEB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{896FD34F-C291-4BDF-A1FA-756BB699FEB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
