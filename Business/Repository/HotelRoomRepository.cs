@@ -26,6 +26,7 @@ namespace Business.Repository
             HotelRoom hotelRoom = _mapper.Map<HotelRoomDTO, HotelRoom>(hotelRoomDTO);
             hotelRoom.CreateData = DateTime.Now;
             hotelRoom.CreatedBy = "";
+            hotelRoom.UpdateBy = "";
 
             var addedHotelRoom = _context.HotelRooms.Add(hotelRoom);
             await _context.SaveChangesAsync();

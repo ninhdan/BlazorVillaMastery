@@ -21,7 +21,7 @@ namespace DataAcesss.Data
         public string SqFt { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreateData { get; set; } = DateTime.Now;
-        public string UpdateBy { get; set; }
+        public string UpdateBy { get; set; } 
         public DateTime UpdateDate { get; set; }
 
     }
