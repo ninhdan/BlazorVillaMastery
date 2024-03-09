@@ -29,11 +29,16 @@
                 {
                     @foreach (var item in HotelRooms)
                     {
-                        <td>@item.Name</td>
-                        <td>@item.Occupancy</td>
-                        <td>@item.RegularRate.ToString("C")</td>
-                        <td>@item.SqFt</td>
-                        <td></td>
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Occupancy</td>
+                            <td>@item.RegularRate.ToString("C")</td>
+                            <td>@item.SqFt</td>
+                            <td>
+                                <NavLink href="@($"/hotel-room/edit/{item.Id}")" class="btn btn-outline-primary">Edit</NavLink>
+                            </td>
+                        </tr>
+                       
                     }
                 }
                 else

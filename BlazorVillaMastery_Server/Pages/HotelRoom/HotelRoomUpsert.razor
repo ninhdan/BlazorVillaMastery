@@ -1,8 +1,9 @@
 ﻿@page "/hotel-room/create"
+@page "/hotel-room/edit/{Id:int}"
 @using global::Models
 @inject IHotelRoomRepository HotelRoomRepository
 @inject NavigationManager NavigationManager
-
+@inject IJSRuntime JSRuntime
 
 
 
@@ -51,17 +52,69 @@
 </div>
 
 @code {
+
+    [Parameter]
+    public int? Id { get; set; }
+
     private HotelRoomDTO HotelRoomModel { get; set; } = new HotelRoomDTO();
     private string Title { get; set; } = "Create";
 
+
+    protected override async Task OnInitializedAsync()
+    {
+        if(Id != null)
+        {
+            //Update
+
+            Title = "Update";
+            HotelRoomModel = await HotelRoomRepository.GetHotelRoom(Id.Value);
+        }
+        else
+        {
+            //Create
+            HotelRoomModel = new HotelRoomDTO();
+        }
+    }
+
+
+
     private async Task HandleHotelRoomUpSert()
     {
-        var roomDetailsByName = await HotelRoomRepository.IsRoomUnique(HotelRoomModel.Name);
-        if(roomDetailsByName != null)
+        try
         {
-            return;
+
+            var roomDetailsByName = await HotelRoomRepository.IsRoomUnique(HotelRoomModel.Name, HotelRoomModel.Id);
+            if (roomDetailsByName != null)
+            {
+                await JSRuntime.ToastrError("Room name already exists.");
+                return;
+            }
+
+            if(HotelRoomModel.Id != 0 && Title == "Update")
+            {
+                //update
+                var updateRoomResult = await HotelRoomRepository.UpdateHotelRoom(HotelRoomModel.Id, HotelRoomModel);
+                await JSRuntime.ToastrSuccess("Hotel room updated successfully");
+            }
+            else
+            {
+                //Create
+                var createResult = await HotelRoomRepository.CreateHotelRoom(HotelRoomModel);
+                await JSRuntime.ToastrSuccess("Hotel room created successfully");
+
+            }
         }
-        var createResult = await HotelRoomRepository.CreateHotelRoom(HotelRoomModel);
+        catch (Exception ex)
+        {
+            
+            throw;
+        }
+
+
+
+
+        
+       
         NavigationManager.NavigateTo("hotel-room");
     }
 
